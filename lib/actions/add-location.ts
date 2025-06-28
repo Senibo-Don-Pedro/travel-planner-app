@@ -2,7 +2,7 @@
 
 import { auth } from "@/auth";
 import { db } from "../prisma";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 async function geocodeAddress(address: string) {
   const response = await fetch(
@@ -47,5 +47,5 @@ export async function addLocation(formData: FormData, tripId: string) {
     },
   });
 
-  redirect(`/trips/${tripId}`);
+  // redirect(`/trips/${tripId}`);
 }

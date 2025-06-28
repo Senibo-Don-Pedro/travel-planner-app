@@ -4,9 +4,12 @@ import { useTransition } from "react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { addLocation } from "@/lib/actions/add-location";
+import { useRouter } from "next/navigation";
 
 export default function NewLocationClient({ tripId }: { tripId: string }) {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,6 +19,8 @@ export default function NewLocationClient({ tripId }: { tripId: string }) {
       try {
         await addLocation(formData, tripId); // ← server action, throws or redirects
         toast.success("Trip created!");
+        router.push(`/trips/${tripId}`); // Redirect to the trip page
+        
       } catch (err) {
         const message =
           err instanceof Error ? err.message : "Something went wrong";

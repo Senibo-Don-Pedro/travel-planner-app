@@ -1,3 +1,5 @@
+"use client"
+
 import { Location, Trip } from "@/app/generated/prisma";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,21 +7,24 @@ import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Calendar, MapPin, Plus } from "lucide-react";
 import SortableItinerary from "./sortable-itinerary";
-import Map from "./Map";
+// import Map from "./Map";
+import { useState } from "react";
+
+import dynamic from "next/dynamic";
+const Map = dynamic(() => import("@/components/Map"), { 
+  ssr: false 
+});
 
 export interface TripWithLocation extends Trip {
   locations: Location[];
 }
-
-// export type TripWithLocation = Trip & {
-//   locations: Location[]
-// }
 
 interface TripDetailClientProps {
   trip: TripWithLocation;
 }
 
 export default function TripDetailClient({ trip }: TripDetailClientProps) {
+  const [activeTab, setActiveTab] = useState("overview");
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       {" "}
@@ -60,8 +65,8 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
         </div>
       </div>
       <div className="bg-white p-6 shadow rounded-lg">
-        {/* <Tabs value={activeTab} onValueChange={setActiveTab}> */}
-        <Tabs>
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          {/* <Tabs> */}
           <TabsList className="mb-6">
             <TabsTrigger value="overview" className="text-lg">
               Overview
