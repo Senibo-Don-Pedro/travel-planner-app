@@ -26,7 +26,7 @@ async function geocodeAddress(address: string) {
     `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`,
     {
       headers: {
-        'User-Agent': 'travel-planner-app/1.0 (your@email.com)'
+        'User-Agent': 'travel-planner-app/1.0 (senibodonpedro@gmail.com)'
       }
     }
   );
