@@ -2,7 +2,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import Globe, { GlobeMethods } from "react-globe.gl";
+import  { GlobeMethods } from "react-globe.gl";
+
+import dynamic from "next/dynamic";
+const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
 export interface TransformedLocation {
   lat: number;
