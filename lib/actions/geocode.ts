@@ -14,7 +14,7 @@ export async function getCountryFromCoordinates(
     `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`,
     {
       headers: {
-        "User-Agent": "travel-planner-app/1.0 (senibodonpedro@gmail.com)",
+        "User-Agent": "travel-planner-app/1.0" ,
       },
     }
   );
