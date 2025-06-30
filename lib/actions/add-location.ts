@@ -2,7 +2,7 @@
 
 import { auth } from "@/auth";
 import { db } from "../prisma";
-import { revalidatePath } from "next/cache";
+
 
 async function geocodeAddress(address: string) {
   try {
@@ -52,6 +52,5 @@ export async function addLocation(formData: FormData, tripId: string) {
     },
   });
 
-  // This will revalidate the trip page and trigger a refetch
-  revalidatePath(`/trips/${tripId}`);
+  
 }

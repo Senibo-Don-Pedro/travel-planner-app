@@ -2,6 +2,7 @@
 
 import { auth } from "../../auth";
 import { db } from "../prisma";
+import { revalidatePath } from "next/cache";
 
 export async function reorderItinerary(tripId: string, newOrder: string[]) {
   const session = await auth();
@@ -17,4 +18,7 @@ export async function reorderItinerary(tripId: string, newOrder: string[]) {
       })
     )
   );
+
+  // This will revalidate the trip page and trigger a refetch
+  revalidatePath(`/trips/${tripId}`);
 }
