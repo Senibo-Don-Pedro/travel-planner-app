@@ -2,26 +2,7 @@
 
 import { auth } from "@/auth";
 import { db } from "../prisma";
-
-// async function geocodeAddress(address: string) {
-//   const response = await fetch(
-//     `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`,
-//     {
-//       headers: {
-//         'User-Agent': 'travel-planner-app/1.0 (senibodonpedro@gmail.com)'
-//       }
-//     }
-//   );
-
-//   console.log('Nominatim status:', response.status);
-
-//   const data = await response.json();
-//   console.log('Nominatim data:', data);
-
-//   if (!data.length) throw new Error("No results found");
-//   const { lat, lon } = data[0];
-//   return { lat: parseFloat(lat), lng: parseFloat(lon) };
-// }
+import { revalidatePath } from "next/cache";
 
 async function geocodeAddress(address: string) {
   try {
@@ -71,5 +52,6 @@ export async function addLocation(formData: FormData, tripId: string) {
     },
   });
 
-  // redirect(`/trips/${tripId}`);
+  // This will revalidate the trip page and trigger a refetch
+  revalidatePath(`/trips/${tripId}`);
 }
