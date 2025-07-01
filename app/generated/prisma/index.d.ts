@@ -6964,6 +6964,8 @@ export namespace Prisma {
     locationTitle: string | null
     lat: number | null
     lng: number | null
+    country: string | null
+    formattedAddress: string | null
     tripId: string | null
     order: number | null
     createdAt: Date | null
@@ -6975,6 +6977,8 @@ export namespace Prisma {
     locationTitle: string | null
     lat: number | null
     lng: number | null
+    country: string | null
+    formattedAddress: string | null
     tripId: string | null
     order: number | null
     createdAt: Date | null
@@ -6986,6 +6990,8 @@ export namespace Prisma {
     locationTitle: number
     lat: number
     lng: number
+    country: number
+    formattedAddress: number
     tripId: number
     order: number
     createdAt: number
@@ -7011,6 +7017,8 @@ export namespace Prisma {
     locationTitle?: true
     lat?: true
     lng?: true
+    country?: true
+    formattedAddress?: true
     tripId?: true
     order?: true
     createdAt?: true
@@ -7022,6 +7030,8 @@ export namespace Prisma {
     locationTitle?: true
     lat?: true
     lng?: true
+    country?: true
+    formattedAddress?: true
     tripId?: true
     order?: true
     createdAt?: true
@@ -7033,6 +7043,8 @@ export namespace Prisma {
     locationTitle?: true
     lat?: true
     lng?: true
+    country?: true
+    formattedAddress?: true
     tripId?: true
     order?: true
     createdAt?: true
@@ -7131,6 +7143,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country: string | null
+    formattedAddress: string | null
     tripId: string
     order: number
     createdAt: Date
@@ -7161,6 +7175,8 @@ export namespace Prisma {
     locationTitle?: boolean
     lat?: boolean
     lng?: boolean
+    country?: boolean
+    formattedAddress?: boolean
     tripId?: boolean
     order?: boolean
     createdAt?: boolean
@@ -7173,6 +7189,8 @@ export namespace Prisma {
     locationTitle?: boolean
     lat?: boolean
     lng?: boolean
+    country?: boolean
+    formattedAddress?: boolean
     tripId?: boolean
     order?: boolean
     createdAt?: boolean
@@ -7185,6 +7203,8 @@ export namespace Prisma {
     locationTitle?: boolean
     lat?: boolean
     lng?: boolean
+    country?: boolean
+    formattedAddress?: boolean
     tripId?: boolean
     order?: boolean
     createdAt?: boolean
@@ -7197,13 +7217,15 @@ export namespace Prisma {
     locationTitle?: boolean
     lat?: boolean
     lng?: boolean
+    country?: boolean
+    formattedAddress?: boolean
     tripId?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "locationTitle" | "lat" | "lng" | "tripId" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["location"]>
+  export type LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "locationTitle" | "lat" | "lng" | "country" | "formattedAddress" | "tripId" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["location"]>
   export type LocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     trip?: boolean | TripDefaultArgs<ExtArgs>
   }
@@ -7224,6 +7246,8 @@ export namespace Prisma {
       locationTitle: string
       lat: number
       lng: number
+      country: string | null
+      formattedAddress: string | null
       tripId: string
       order: number
       createdAt: Date
@@ -7656,6 +7680,8 @@ export namespace Prisma {
     readonly locationTitle: FieldRef<"Location", 'String'>
     readonly lat: FieldRef<"Location", 'Float'>
     readonly lng: FieldRef<"Location", 'Float'>
+    readonly country: FieldRef<"Location", 'String'>
+    readonly formattedAddress: FieldRef<"Location", 'String'>
     readonly tripId: FieldRef<"Location", 'String'>
     readonly order: FieldRef<"Location", 'Int'>
     readonly createdAt: FieldRef<"Location", 'DateTime'>
@@ -8161,6 +8187,8 @@ export namespace Prisma {
     locationTitle: 'locationTitle',
     lat: 'lat',
     lng: 'lng',
+    country: 'country',
+    formattedAddress: 'formattedAddress',
     tripId: 'tripId',
     order: 'order',
     createdAt: 'createdAt',
@@ -8616,6 +8644,8 @@ export namespace Prisma {
     locationTitle?: StringFilter<"Location"> | string
     lat?: FloatFilter<"Location"> | number
     lng?: FloatFilter<"Location"> | number
+    country?: StringNullableFilter<"Location"> | string | null
+    formattedAddress?: StringNullableFilter<"Location"> | string | null
     tripId?: StringFilter<"Location"> | string
     order?: IntFilter<"Location"> | number
     createdAt?: DateTimeFilter<"Location"> | Date | string
@@ -8628,6 +8658,8 @@ export namespace Prisma {
     locationTitle?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    country?: SortOrderInput | SortOrder
+    formattedAddress?: SortOrderInput | SortOrder
     tripId?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
@@ -8643,6 +8675,8 @@ export namespace Prisma {
     locationTitle?: StringFilter<"Location"> | string
     lat?: FloatFilter<"Location"> | number
     lng?: FloatFilter<"Location"> | number
+    country?: StringNullableFilter<"Location"> | string | null
+    formattedAddress?: StringNullableFilter<"Location"> | string | null
     tripId?: StringFilter<"Location"> | string
     order?: IntFilter<"Location"> | number
     createdAt?: DateTimeFilter<"Location"> | Date | string
@@ -8655,6 +8689,8 @@ export namespace Prisma {
     locationTitle?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    country?: SortOrderInput | SortOrder
+    formattedAddress?: SortOrderInput | SortOrder
     tripId?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
@@ -8674,6 +8710,8 @@ export namespace Prisma {
     locationTitle?: StringWithAggregatesFilter<"Location"> | string
     lat?: FloatWithAggregatesFilter<"Location"> | number
     lng?: FloatWithAggregatesFilter<"Location"> | number
+    country?: StringNullableWithAggregatesFilter<"Location"> | string | null
+    formattedAddress?: StringNullableWithAggregatesFilter<"Location"> | string | null
     tripId?: StringWithAggregatesFilter<"Location"> | string
     order?: IntWithAggregatesFilter<"Location"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Location"> | Date | string
@@ -9066,6 +9104,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country?: string | null
+    formattedAddress?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9077,6 +9117,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country?: string | null
+    formattedAddress?: string | null
     tripId: string
     order?: number
     createdAt?: Date | string
@@ -9088,6 +9130,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9099,6 +9143,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     tripId?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9110,6 +9156,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country?: string | null
+    formattedAddress?: string | null
     tripId: string
     order?: number
     createdAt?: Date | string
@@ -9121,6 +9169,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9131,6 +9181,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     tripId?: StringFieldUpdateOperationsInput | string
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9557,6 +9609,8 @@ export namespace Prisma {
     locationTitle?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    country?: SortOrder
+    formattedAddress?: SortOrder
     tripId?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
@@ -9574,6 +9628,8 @@ export namespace Prisma {
     locationTitle?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    country?: SortOrder
+    formattedAddress?: SortOrder
     tripId?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
@@ -9585,6 +9641,8 @@ export namespace Prisma {
     locationTitle?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    country?: SortOrder
+    formattedAddress?: SortOrder
     tripId?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
@@ -10436,6 +10494,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country?: string | null
+    formattedAddress?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10446,6 +10506,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country?: string | null
+    formattedAddress?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10520,6 +10582,8 @@ export namespace Prisma {
     locationTitle?: StringFilter<"Location"> | string
     lat?: FloatFilter<"Location"> | number
     lng?: FloatFilter<"Location"> | number
+    country?: StringNullableFilter<"Location"> | string | null
+    formattedAddress?: StringNullableFilter<"Location"> | string | null
     tripId?: StringFilter<"Location"> | string
     order?: IntFilter<"Location"> | number
     createdAt?: DateTimeFilter<"Location"> | Date | string
@@ -10732,6 +10796,8 @@ export namespace Prisma {
     locationTitle: string
     lat: number
     lng: number
+    country?: string | null
+    formattedAddress?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10742,6 +10808,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10752,6 +10820,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10762,6 +10832,8 @@ export namespace Prisma {
     locationTitle?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

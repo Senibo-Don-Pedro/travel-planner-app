@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { getCountryFromCoordinates } from "@/lib/actions/geocode";
+
 import { db } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -20,6 +20,8 @@ export async function GET() {
         locationTitle: true,
         lat: true,
         lng: true,
+        country: true,
+        formattedAddress: true,
         trip: {
           select: {
             title: true,
@@ -28,18 +30,25 @@ export async function GET() {
       },
     });
 
-    const transformedLocations = await Promise.all(
-      locations.map(async (loc) => {
-        const geocodeResult = await getCountryFromCoordinates(loc.lat, loc.lng);
+    // const transformedLocations = await Promise.all(
+    //   locations.map(async (loc) => {
+    //     const geocodeResult = await getCountryFromCoordinates(loc.lat, loc.lng);
 
-        return {
-          name: `${loc.trip.title} - ${geocodeResult.formattedAddress}`,
-          lat: loc.lat,
-          lng: loc.lng,
-          country: geocodeResult.country,
-        };
-      })
-    );
+    //     return {
+    //       name: `${loc.trip.title} - ${geocodeResult.formattedAddress}`,
+    //       lat: loc.lat,
+    //       lng: loc.lng,
+    //       country: geocodeResult.country,
+    //     };
+    //   })
+    // );
+
+    const transformedLocations = locations.map((l) => ({
+      name: `${l.trip.title} — ${l.formattedAddress ?? "Unknown address"}`,
+      lat: l.lat,
+      lng: l.lng,
+      country: l.country ?? "Unknown",
+    }));
 
     return NextResponse.json(transformedLocations);
   } catch (err) {

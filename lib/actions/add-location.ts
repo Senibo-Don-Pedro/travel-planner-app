@@ -2,7 +2,7 @@
 
 import { auth } from "@/auth";
 import { db } from "../prisma";
-
+import { getCountryFromCoordinates } from "./geocode";
 
 async function geocodeAddress(address: string) {
   try {
@@ -25,7 +25,6 @@ async function geocodeAddress(address: string) {
   }
 }
 
-
 export async function addLocation(formData: FormData, tripId: string) {
   const session = await auth();
 
@@ -36,7 +35,14 @@ export async function addLocation(formData: FormData, tripId: string) {
 
   if (!address) throw new Error("Missing address");
 
+  // 1) forward geocode
   const { lat, lng } = await geocodeAddress(address);
+
+  // 2) reverse geocode for country + formattedAddress
+  const { country, formattedAddress } = await getCountryFromCoordinates(
+    lat,
+    lng
+  );
 
   const count = await db.location.count({
     where: { tripId },
@@ -49,8 +55,8 @@ export async function addLocation(formData: FormData, tripId: string) {
       lng,
       tripId,
       order: count,
+      country,
+      formattedAddress
     },
   });
-
-  
 }

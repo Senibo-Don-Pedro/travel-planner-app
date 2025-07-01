@@ -178,6 +178,8 @@ exports.Prisma.LocationScalarFieldEnum = {
   locationTitle: 'locationTitle',
   lat: 'lat',
   lng: 'lng',
+  country: 'country',
+  formattedAddress: 'formattedAddress',
   tripId: 'tripId',
   order: 'order',
   createdAt: 'createdAt',
